@@ -19,11 +19,13 @@
 		}
 		window.addEventListener("load", function() {
 			let form = document.getElementById("searchForm");
-			let engineSelect = document.querySelector("input[name=engine]:checked");
-			let searchInput = document.querySelector("input[name=q]");
+
 			form.addEventListener("submit", function(event) {
-				if (searchInput === "" || engineSelect === null) {
+				let searchInput = document.querySelector("input[name=q]");
+				let engineSelect = document.querySelector("input[name=engine]:checked");
+				if (searchInput.value === "" || engineSelect === null) {
 					alert("All fields are required!");
+					event.preventDefault();
 				} else {
 					let url = setSearchEngine();
 					form.setAttribute("action", url);
